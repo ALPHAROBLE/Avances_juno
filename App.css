@@ -1,0 +1,80 @@
+.app {
+  padding: 20px;
+  font-family: 'Arial', sans-serif;
+  background-color: #fdf5ef;
+}
+
+.search-section {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.user-list-section, .friends-section, .requests-section {
+  margin-bottom: 20px;
+}
+
+h2 {
+  background-color: #ffe0d1;
+  padding: 10px;
+  border-radius: 20px;
+  text-align: center;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.user-item, .friend-item, .request-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f7f9f9;
+  padding: 10px 15px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+}
+
+.user-name, .friend-name, .request-name {
+  font-size: 1.2em;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.add-button, .eliminar-button, .yes-button, .no-button {
+  background-color: #c6765e;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.add-button:hover, .eliminar-button:hover, .yes-button:hover, .no-button:hover {
+  background-color: #a85d4a;
+}
+
+.yes-button {
+  background-color: #d4b06e;
+}
+
+.no-button {
+  background-color: #c6765e;
+}
+
+.buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.empty-message {
+  text-align: center;
+  color: #c6765e;
+  font-size: 1.2em;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  margin-top: 10px;
+}
+
+.search-bar {
+  width: 100%;
+  padding: 10px;
+  border-radius: 20px;
+  border: 2px solid #c6765e;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
