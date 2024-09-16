@@ -1,121 +1,71 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import './App.css';
-
-function User({ name, onAdd }) {
-  return (
-    <div className="user-item">
-      <span className="user-name">{name}</span>
-      <button className="add-button" onClick={() => onAdd(name)}>Añadir</button>
-    </div>
-  );
-}
-
-function Friend({ name, onRemove }) {
-  return (
-    <div className="friend-item">
-      <span className="friend-name">{name}</span>
-      <button className="eliminar-button" onClick={() => onRemove(name)}>Eliminar</button>
-    </div>
-  );
-}
-
-function FriendRequest({ name, onAccept, onReject }) {
-  return (
-    <div className="request-item">
-      <span className="request-name">{name}</span>
-      <div className="buttons">
-        <button className="yes-button" onClick={() => onAccept(name)}>Sí</button>
-        <button className="no-button" onClick={() => onReject(name)}>No</button>
-      </div>
-    </div>
-  );
-}
+import BarChartComponent from './BarChart';
 
 function App() {
-  const [friends, setFriends] = useState(["Isabella", "Nicolas", "Sebastian", "Luisa"]);
-  const [requests, setRequests] = useState(["Luis", "Jose", "Camila", "Esteban"]);
-  const [search, setSearch] = useState('');
-  const [userList, setUserList] = useState(["Ana", "Pablo", "Carlos", "Maria", "Sofia", "Pedro"]);
+  const [selectedEmotionAge, setSelectedEmotionAge] = useState('Todas');
+  const [selectedEmotionCity, setSelectedEmotionCity] = useState('Todas');
+  const [selectedCity, setSelectedCity] = useState(null);
 
-  const handleSearchChange = (event) => {
-    setSearch(event.target.value);
+  const emotions = ['Todas', 'Feliz', 'Triste', 'Enojado', 'Ansioso', 'Motivado', 'Aburrido'];
+  const cities = ['#1 Buga', '#2 Cali', '#3 Tuluá', '#4 Sevilla'];
+
+  const handleEmotionClickAge = (emotion) => {
+    setSelectedEmotionAge(emotion);
   };
 
-  const handleAddFriend = (name) => {
-    setFriends([...friends, name]);
-    setUserList(userList.filter(user => user !== name));
+  const handleEmotionClickCity = (emotion) => {
+    setSelectedEmotionCity(emotion);
   };
 
-  const handleRemoveFriend = (name) => {
-    setFriends(friends.filter(friend => friend !== name));
-    setUserList([...userList, name]);  // Add removed friend back to userList
+  const handleCityClick = (city) => {
+    setSelectedCity(city);
   };
-
-  const handleAcceptRequest = (name) => {
-    setFriends([...friends, name]);
-    setRequests(requests.filter(request => request !== name));
-    setUserList(userList.filter(user => user !== name)); // Remove accepted user from userList
-  };
-
-  const handleRejectRequest = (name) => {
-    setRequests(requests.filter(request => request !== name));
-  };
-
-  // Filter out friends from userList and requests from userList
-  const filteredUsers = userList.filter(user =>
-    user.toLowerCase().includes(search.toLowerCase()) &&
-    !friends.includes(user)  // Exclude friends from the user list
-  );
-
-  const filteredRequests = requests.filter(request =>
-    request.toLowerCase().includes(search.toLowerCase())
-  );
 
   return (
-    <div className="app">
-      <div className="user-list-section">
-        <h2>Buscar Usuarios</h2>
-        <input 
-          type="text" 
-          placeholder="Buscar usuarios..." 
-          value={search}
-          onChange={handleSearchChange}
-          className="search-bar"
-        />
-        {filteredUsers.length > 0 ? (
-          filteredUsers.map((user, index) => (
-            <User key={index} name={user} onAdd={handleAddFriend} />
-          ))
-        ) : (
-          <p className="empty-message">No se encontraron usuarios</p>
-        )}
+    <div className="container">
+      {/* Análisis por Edades */}
+      <div className="section">
+        <h2>Análisis por Edades</h2>
+        <div className="filter-container">
+          {emotions.map((emotion) => (
+            <button
+              key={emotion}
+              className={`filter ${selectedEmotionAge === emotion ? 'selected' : ''}`}
+              onClick={() => handleEmotionClickAge(emotion)}
+            >
+              {emotion}
+            </button>
+          ))}
+        </div>
+        <BarChartComponent selectedEmotion={selectedEmotionAge} />
       </div>
 
-      <div className="friends-section">
-        <h2>Amigos</h2>
-        {friends.length > 0 ? (
-          friends.map((friend, index) => (
-            <Friend key={index} name={friend} onRemove={handleRemoveFriend} />
-          ))
-        ) : (
-          <p className="empty-message">No tienes amigos</p>
-        )}
-      </div>
-
-      <div className="requests-section">
-        <h2>Solicitudes</h2>
-        {filteredRequests.length > 0 ? (
-          filteredRequests.map((request, index) => (
-            <FriendRequest 
-              key={index} 
-              name={request} 
-              onAccept={handleAcceptRequest} 
-              onReject={handleRejectRequest}
-            />
-          ))
-        ) : (
-          <p className="empty-message">No tienes solicitudes de amistad</p>
-        )}
+      {/* Análisis por Ciudades */}
+      <div className="section cities">
+        <h2>Análisis por Ciudades</h2>
+        <div className="filter-container">
+          {emotions.map((emotion) => (
+            <button
+              key={emotion}
+              className={`filter ${selectedEmotionCity === emotion ? 'selected' : ''}`}
+              onClick={() => handleEmotionClickCity(emotion)}
+            >
+              {emotion}
+            </button>
+          ))}
+        </div>
+        <div className="city-container">
+          {cities.map((city) => (
+            <button
+              key={city}
+              className={`city ${selectedCity === city ? 'selected' : ''}`}
+              onClick={() => handleCityClick(city)}
+            >
+              {city}
+            </button>
+          ))}
+        </div>
       </div>
     </div>
   );

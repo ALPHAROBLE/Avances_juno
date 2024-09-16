@@ -1,80 +1,95 @@
-.app {
-  padding: 20px;
+/* Estilos generales */
+body {
   font-family: 'Arial', sans-serif;
-  background-color: #fdf5ef;
+  background-color: #F7EDE4;
+  margin: 0;
+  padding: 0;
 }
 
-.search-section {
-  margin-bottom: 20px;
-  text-align: center;
+.container {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 20px;
 }
 
-.user-list-section, .friends-section, .requests-section {
-  margin-bottom: 20px;
+.section {
+  background-color: #F7DACD;
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 30px;
 }
 
 h2 {
-  background-color: #ffe0d1;
-  padding: 10px;
-  border-radius: 20px;
-  text-align: center;
-  font-family: 'Comic Sans MS', cursive, sans-serif;
+  font-size: 24px;
+  margin-bottom: 15px;
+  color: #4A3C31;
 }
 
-.user-item, .friend-item, .request-item {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  background-color: #f7f9f9;
-  padding: 10px 15px;
-  margin-bottom: 10px;
-  border-radius: 20px;
-}
-
-.user-name, .friend-name, .request-name {
-  font-size: 1.2em;
-  font-family: 'Comic Sans MS', cursive, sans-serif;
-}
-
-.add-button, .eliminar-button, .yes-button, .no-button {
-  background-color: #c6765e;
-  color: white;
-  border: none;
-  border-radius: 20px;
-  padding: 5px 10px;
-  cursor: pointer;
-  font-family: 'Comic Sans MS', cursive, sans-serif;
-}
-
-.add-button:hover, .eliminar-button:hover, .yes-button:hover, .no-button:hover {
-  background-color: #a85d4a;
-}
-
-.yes-button {
-  background-color: #d4b06e;
-}
-
-.no-button {
-  background-color: #c6765e;
-}
-
-.buttons {
+/* Filtros de análisis por edades */
+.filter-container {
   display: flex;
   gap: 10px;
+  margin-bottom: 20px;
 }
 
-.empty-message {
-  text-align: center;
-  color: #c6765e;
-  font-size: 1.2em;
-  font-family: 'Comic Sans MS', cursive, sans-serif;
-  margin-top: 10px;
-}
-
-.search-bar {
-  width: 100%;
-  padding: 10px;
+.filter {
+  padding: 8px 12px;
+  background-color: #F1EDE8;
   border-radius: 20px;
-  border: 2px solid #c6765e;
-  font-family: 'Comic Sans MS', cursive, sans-serif;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s;
+}
+
+.filter.selected {
+  background-color: #C8B9A6;
+}
+
+.filter:hover {
+  background-color: #D4C5A8;
+}
+
+/* Gráficos de barras */
+.bar-chart {
+  background-color: #F7DACD;
+  padding: 30px;
+  border-radius: 10px;
+}
+
+.bar-chart-placeholder {
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px dashed #C8B9A6;
+  border-radius: 10px;
+  color: #4A3C31;
+}
+
+/* Ciudades */
+.cities {
+  background-color: #ECE1BF;
+}
+
+.city-container {
+  display: flex;
+  gap: 20px;
+}
+
+.city {
+  background-color: #F1EDE8;
+  padding: 10px 20px;
+  border-radius: 15px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  border: none;
+}
+
+.city.selected {
+  background-color: #C8B9A6;
+}
+
+.city:hover {
+  background-color: #D4C5A8;
 }
