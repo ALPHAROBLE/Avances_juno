@@ -1,74 +1,51 @@
-import React, { useState } from 'react';
-import './App.css';
-import BarChartComponent from './BarChart';
+import React from 'react';
+import './App.css'; // Asegúrate de tener el CSS enlazado correctamente
+import rachaImg from './racha.png'; // Importa la imagen
 
 function App() {
-  const [selectedEmotionAge, setSelectedEmotionAge] = useState('Todas');
-  const [selectedEmotionCity, setSelectedEmotionCity] = useState('Todas');
-  const [selectedCity, setSelectedCity] = useState(null);
+    return (
+        <div className="container-rachas">
+            {/* Div para los días de racha */}
+            <div className="racha">
+                <div className="icono-racha">
+                    <img src={rachaImg} alt="Fuego" /> 
+                </div>
+                <div className="texto-racha">
+                    <h2>7 Días</h2>
+                    <span>FELICES</span>
+                </div>
+            </div>
 
-  const emotions = ['Todas', 'Feliz', 'Triste', 'Enojado', 'Ansioso', 'Motivado', 'Aburrido'];
-  const cities = ['#1 Buga', '#2 Cali', '#3 Tuluá', '#4 Sevilla'];
+            {/* Div para la emoción de hoy y hora de alerta */}
+            <div className="emocion-hoy">
+                <div className="emocion">
+                    <span>EMOCION DE HOY: </span>
+                    <div className="etiqueta-feliz">Feliz</div>
+                </div>
+                <div className="hora-alerta">
+                    <span>Hora alerta</span>
+                    <div className="hora">7:00 am</div>
+                </div>
+            </div>
 
-  const handleEmotionClickAge = (emotion) => {
-    setSelectedEmotionAge(emotion);
-  };
-
-  const handleEmotionClickCity = (emotion) => {
-    setSelectedEmotionCity(emotion);
-  };
-
-  const handleCityClick = (city) => {
-    setSelectedCity(city);
-  };
-
-  return (
-    <div className="container">
-      {/* Análisis por Edades */}
-      <div className="section">
-        <h2>Análisis por Edades</h2>
-        <div className="filter-container">
-          {emotions.map((emotion) => (
-            <button
-              key={emotion}
-              className={`filter ${selectedEmotionAge === emotion ? 'selected' : ''}`}
-              onClick={() => handleEmotionClickAge(emotion)}
-            >
-              {emotion}
-            </button>
-          ))}
+            {/* Div para los avatares a desbloquear */}
+            <div className="avatares-desbloquear">
+                <span>Avatares a desbloquear</span>
+                <div className="avatar-container">
+                    <div className="avatar desbloqueado">7</div>
+                    <div className="avatar">14</div>
+                    <div className="avatar">21</div>
+                    <div className="avatar">28</div>
+                </div>
+                <div className="avatar-container">
+                    <div className="avatar">35</div>
+                    <div className="avatar">42</div>
+                    <div className="avatar">49</div>
+                    <div className="avatar">56</div>
+                </div>
+            </div>
         </div>
-        <BarChartComponent selectedEmotion={selectedEmotionAge} />
-      </div>
-
-      {/* Análisis por Ciudades */}
-      <div className="section cities">
-        <h2>Análisis por Ciudades</h2>
-        <div className="filter-container">
-          {emotions.map((emotion) => (
-            <button
-              key={emotion}
-              className={`filter ${selectedEmotionCity === emotion ? 'selected' : ''}`}
-              onClick={() => handleEmotionClickCity(emotion)}
-            >
-              {emotion}
-            </button>
-          ))}
-        </div>
-        <div className="city-container">
-          {cities.map((city) => (
-            <button
-              key={city}
-              className={`city ${selectedCity === city ? 'selected' : ''}`}
-              onClick={() => handleCityClick(city)}
-            >
-              {city}
-            </button>
-          ))}
-        </div>
-      </div>
-    </div>
-  );
+    );
 }
 
 export default App;
